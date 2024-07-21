@@ -88,3 +88,9 @@ def add_friend(social_network,userID,userID2):
     social_network.userIDs[userID].addFriends(userID2)
     social_network.userIDs[userID2].addFriends(userID)
 
+#remove a friend
+def remove_friend(social_network,userID,userID2):
+    social_network.delFriendsRelation(userID,userID2)
+    social_network.userIDs[userID].removeFriends(userID2)
+    social_network.userIDs[userID2].removeFriends(userID)
+
