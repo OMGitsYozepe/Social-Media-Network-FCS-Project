@@ -18,6 +18,19 @@ class Graph:
         #here we assigned a set to store friends of each user.
         #it will remove duplicates and is easy to add and delete into.
         self.friends[userId]=set()
+
+    #We need a function to delete users.
+    def delUsers(self,userID):
+        if userID in self.userIDs:
+            del self.userIDs[userID]
+            del self.friends[userID]
+            #let i be the set in the dict friends.
+            #we used the discard function because in case
+            #there is no match in value, no error is raised. 
+            for i in self.friends.values():
+                i.discard(userID)
+
+    
     
     
 
