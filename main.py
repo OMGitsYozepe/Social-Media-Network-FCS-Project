@@ -66,6 +66,25 @@ class Graph:
         return "User not found"
 
 
+    # Recommend top friend based on mutual friends
+    def recommend_friends(self, userID):
+        if userID not in self.userIDs:
+            return "User not found"
+        user_friends = self.friends.get(userID, set())
+        recommendations = {}
+        for friend in user_friends:
+            for potential_friend in self.friends.get(friend, set()):
+                if potential_friend != userID and potential_friend not in user_friends:
+                    if potential_friend not in recommendations:
+                        recommendations[potential_friend] = 0
+                    recommendations[potential_friend] += 1
+        # Sort recommendations by the number of mutual friends in descending order
+        sorted_recommendations = sorted(recommendations.items(), key=lambda item: item[1], reverse=True)
+        # Return the top recommendations
+        return [self.userIDs[rec[0]].name for rec in sorted_recommendations]
+
+
+
 #END OF CLASS GRAPH
 
 #Creation of class user
@@ -185,6 +204,12 @@ print("Networks Statistics:", network_stats(social_network))
 # Perform binary search
 target_id = 2
 print(social_network.binary_search_user_by_id(target_id))
+
+
+# Recommend friends
+print("Friend Recommendations for user 2:", social_network.recommend_friends(2))
+print("Friend Recommendations for user 3:", social_network.recommend_friends(3))
+
 
 
 
