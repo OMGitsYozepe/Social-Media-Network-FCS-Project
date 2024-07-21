@@ -118,7 +118,7 @@ def remove_friend(social_network,userID,userID2):
 #add/ change user bio
 def bioUpdate(social_network,userID,details):
     user= social_network.userIDs.get(userID)
-    if user is True:
+    if user:
         user.addBio(details)
 
 #delete a user
