@@ -45,6 +45,27 @@ class Graph:
             self.friends[userID].discard(userID2)
             self.friends[userID2].discard(userID)
 
+    #sorting+Binary searching algorithm by ID
+    #We are Performing binary search to find a user by their ID.
+    #if found we return name and bio
+    #if not found return nothing
+    def binary_search_user_by_id(self, searchID):
+        sortedIDs = sorted(self.userIDs.keys())
+        left, right = 0, len(sortedIDs) - 1
+        while left <= right:
+            mid = (left + right) // 2
+            mid_id = sortedIDs[mid]
+            if mid_id == searchID:
+                user = self.userIDs[mid_id]
+                print("User found:",user.name,user.bio)
+                return user
+            elif mid_id < searchID:
+                left = mid + 1
+            else:
+                right = mid - 1
+        return "User not found"
+
+
 #END OF CLASS GRAPH
 
 #Creation of class user
@@ -113,10 +134,6 @@ LATER
 '''
 
 
-'''SORTING 
-AND SEARCHING 
-USERS'''
-
 
 #Function that calculates statistics of the network
 #it will calculate: num of users,num of friendships and avg friends per user.
@@ -164,6 +181,10 @@ bioUpdate(social_network, 2, {"interests": ["movies", "books"]})
 
 # check statistics
 print("Networks Statistics:", network_stats(social_network))
+
+# Perform binary search
+target_id = 2
+print(social_network.binary_search_user_by_id(target_id))
 
 
 
