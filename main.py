@@ -199,77 +199,98 @@ def network_stats(social_network):
 
 
 
+def menu(social_network):
+    print("""Welcome to the newest social media platform FRIENDFUSION, 
+    created by Joseph Nassif for the FCS final project.""")
+    while True:
+        print("""Please choose one of the numbered options you would like to do:
+1. Add user
+2. Add friend
+3. Remove friend
+4. Update your bio
+5. Delete User
+6. Calculate network statistics
+7. Binary search a user
+8. Recommend a friend
+9. Use BFS algorithm
+10. Use DFS algorithm
+11. Exit
+12. ...
+13. ...
+14. ...
+15. ...
+16. ...""")
+        choice = input("Enter your choice (1-16): ")
+        
+        if choice == '1':
+            name = input("Enter the user's name: ")
+            userID = int(input("Enter the user's ID: "))
+            add_user(social_network, name, userID)
+            print("User added successfully.")
+            
+        elif choice == '2':
+            userID1 = int(input("Enter the first user's ID: "))
+            userID2 = int(input("Enter the second user's ID: "))
+            add_friend(social_network, userID1, userID2)
+            print("Friend added successfully.")
+            
+        elif choice == '3':
+            userID1 = int(input("Enter the first user's ID: "))
+            userID2 = int(input("Enter the second user's ID: "))
+            remove_friend(social_network, userID1, userID2)
+            print("Friend removed successfully.")
+            
+        elif choice == '4':
+            userID = int(input("Enter the user's ID: "))
+            bio_details = input("Enter the bio details (format: key1=value1,key2=value2): ")
+            bio_dict = dict(item.split("=") for item in bio_details.split(","))
+            bioUpdate(social_network, userID, bio_dict)
+            print("Bio updated successfully.")
+            
+        elif choice == '5':
+            userID = int(input("Enter the user's ID to delete: "))
+            delete_user(social_network, userID)
+            print("User deleted successfully.")
+            
+        elif choice == '6':
+            stats = network_stats(social_network)
+            print("Network Statistics:")
+            print(f"Number of users: {stats[1]}")
+            print(f"Number of friendships: {stats[3]}")
+            print(f"Average friends per user: {stats[5]:.2f}")
+            
+        elif choice == '7':
+            userID = int(input("Enter the user's ID to search: "))
+            result = social_network.binary_search_user_by_id(userID)
+            print(result)
+            
+        elif choice == '8':
+            userID = int(input("Enter the user's ID to recommend friends for: "))
+            recommendations = social_network.recommend_friends(userID)
+            print("Recommended friends:", recommendations)
+            
+        elif choice == '9':
+            startID = int(input("Enter the starting user's ID for BFS: "))
+            print("BFS starting from user with ID", startID)
+            social_network.bfs(startID)
+            
+        elif choice == '10':
+            startID = int(input("Enter the starting user's ID for DFS: "))
+            print("DFS starting from user with ID", startID)
+            social_network.dfs(startID)
+            
+        elif choice == '11':
+            print("Exiting the program.")
+            break
+        
+        else:
+            print("Invalid choice, please enter a number between 1 and 16.")
 
-'''TEST CODE'''
-'''!!!!!!!!!!'''
 
+'''RUN THE PROGRAM'''
 
-# Initialize graph
-social_network = Graph()
+social_network=Graph()
+menu(social_network)
 
-#Lets add some users
-add_user(social_network,"Joseph",1)
-add_user(social_network,"Mhamad",2)
-add_user(social_network,"Georgio",3)
-add_user(social_network,"Charbel",4)
-
-# Add relationships between them
-add_friend(social_network, 1, 2)
-add_friend(social_network, 1, 3)
-add_friend(social_network, 2, 4)
-add_friend(social_network, 2, 3)
-
-
-#Delete users from network
-delete_user(social_network,1)
-
-# Update bios
-bioUpdate(social_network, 3, {"interests": ["music", "sports"]})
-bioUpdate(social_network, 2, {"interests": ["movies", "books"],"bio":["i like movies"]})
-
-# check statistics
-print("Networks Statistics:", network_stats(social_network))
-
-# Perform binary search
-target_id = 2
-print(social_network.binary_search_user_by_id(target_id))
-
-
-# Recommend friends
-print("Friend Recommendations for user 2:", social_network.recommend_friends(2))
-print("Friend Recommendations for user 3:", social_network.recommend_friends(3))
-
-
-# Perform BFS starting from user with ID 2
-print("BFS starting from user with ID 2:")
-social_network.bfs(2)
-
-
-# Perform DFS starting from user with ID 2
-print("DFS starting from user with ID 2:")
-social_network.dfs(2)
-
-
-
-def menu():
-    print("""Welcome to the newest social media platform FRIENDFUSION,
-    created by Joseph Nassif for the FCS final project. Please choose
-    one of the numbered options you would like to do:
-    1. Add user
-    2. Add friend
-    3. Remove friend
-    4. Update your bio
-    5. Delete User
-    6. Calculate network statistics
-    7. Binary search a user
-    8. Recommend a friend
-    9. Use BFS algorithm
-    10. Use DFS algorithm
-    11. ...
-    12. ...
-    13. ...
-    14. ...
-    15. ...
-    16. ... """)
 
 
