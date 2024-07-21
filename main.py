@@ -30,7 +30,20 @@ class Graph:
             for i in self.friends.values():
                 i.discard(userID)
 
-    
+    #Function to add relationship between users.
+    def friendsRelation(self,userID,userID2):
+        if (userID and userID2) in self.userIDs:
+            #for each user we add the other as his friend
+            self.friends[userID].add(userID2)
+            self.friends[userID2].add(userID)
+
+    #Function to remove relationship between users.
+    def delFriendsRelation(self,userID,userID2):
+        if (userID and userID2) in self.userIDs:
+            #each user we delete the other from the set of friends
+            self.friends[userID].discard(userID2)
+            self.friends[userID2].discard(userID)
+            
     
     
 
