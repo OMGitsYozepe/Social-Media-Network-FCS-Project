@@ -103,3 +103,35 @@ def bioUpdate(social_network,userID,details):
 #delete a user
 def delete_user(social_network,userID):
     social_network.delUsers(userID)
+
+
+
+'''GRAPH
+ALGORYTHMS
+TO - DO
+LATER
+'''
+
+
+'''SORTING 
+AND SEARCHING 
+USERS'''
+
+
+#Function that calculates statistics of the network
+#it will calculate: num of users,num of friendships and avg friends per user.
+def network_stats(social_network):
+    num_users = len(social_network.userIDs)
+    num_friendships = sum(len(friends) for friends in social_network.friends.values())
+    avg_friends = num_friendships / num_users
+    return "num users:",num_users,"num friendships:",num_friendships,"avg friends",avg_friends
+
+
+
+'''
+Reccomend friend
+'''
+
+
+
+
