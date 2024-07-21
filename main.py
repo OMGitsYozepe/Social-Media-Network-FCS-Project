@@ -65,6 +65,10 @@ class User:
     def removeFriends(self,friendID):
         self.friends.remove(friendID)
     
+    #function to add/update a bio to your profile
+    def addBio(self,details):
+        self.bio.update(details)
+        
     
 
 
