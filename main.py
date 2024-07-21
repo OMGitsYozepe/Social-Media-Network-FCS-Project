@@ -12,5 +12,12 @@ class Graph:
         self.userIDs={}
         self.friends={}
     
+    #We need a function to add new users.
+    def addNewUser(self,user):
+        self.userIDs[userId]=user
+        #here we assigned a set to store friends of each user.
+        #it will remove duplicates and is easy to add and delete into.
+        self.friends[userId]=set()
+    
     
 
