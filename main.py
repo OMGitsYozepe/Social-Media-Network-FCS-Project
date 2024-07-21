@@ -68,7 +68,17 @@ class User:
     #function to add/update a bio to your profile
     def addBio(self,details):
         self.bio.update(details)
-        
-    
 
+
+#END OF CLASS USER
+
+
+
+#Creation of basic operations functions
+
+
+#add a new user
+def add_user(social_network,name,userID):
+    newUser= User(name,userID)
+    social_network.addNewUser(newUser)
 
