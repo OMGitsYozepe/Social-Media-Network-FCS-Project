@@ -177,7 +177,7 @@ delete_user(social_network,1)
 
 # Update bios
 bioUpdate(social_network, 3, {"interests": ["music", "sports"]})
-bioUpdate(social_network, 2, {"interests": ["movies", "books"]})
+bioUpdate(social_network, 2, {"interests": ["movies", "books"],"bio":["i like movies"]})
 
 # check statistics
 print("Networks Statistics:", network_stats(social_network))
