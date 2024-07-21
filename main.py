@@ -83,6 +83,19 @@ class Graph:
         # Return the top recommendations
         return [self.userIDs[rec[0]].name for rec in sorted_recommendations]
 
+    #This is the BFS breadth first search algorithm that will search inside the friends relations.
+    def bfs(self, startID):
+        visited = []
+        queue = []
+        visited.append(startID)
+        queue.append(startID)
+        while queue:
+            userID = queue.pop(0)
+            print(self.userIDs[userID].name, " ")
+            for neighbour in self.friends[userID]:
+                if neighbour not in visited:
+                    visited.append(neighbour)
+                    queue.append(neighbour)
 
 
 #END OF CLASS GRAPH
@@ -146,14 +159,6 @@ def delete_user(social_network,userID):
 
 
 
-'''GRAPH
-ALGORYTHMS
-TO - DO
-LATER
-'''
-
-
-
 #Function that calculates statistics of the network
 #it will calculate: num of users,num of friendships and avg friends per user.
 def network_stats(social_network):
@@ -161,6 +166,27 @@ def network_stats(social_network):
     num_friendships = sum(len(friends) for friends in social_network.friends.values())
     avg_friends = num_friendships / num_users
     return "num users:",num_users,"num friendships:",num_friendships,"avg friends",avg_friends
+
+
+
+
+'''Graph algorithms'''
+#Breadth first search
+def bfs(graph, visited, node):
+    visited.append(node)
+    queue.append(node)
+    while queue:
+        value=queue.pop(0)
+        print(value," ")
+        for neighbour in graph[value]:
+            if neighbour not in visited:
+                visited.append(neighbour)
+                queue.append(neighbour)
+    
+
+
+
+
 
 
 '''TEST CODE'''
@@ -203,6 +229,9 @@ print("Friend Recommendations for user 2:", social_network.recommend_friends(2))
 print("Friend Recommendations for user 3:", social_network.recommend_friends(3))
 
 
+# Perform BFS starting from user with ID 2
+print("BFS starting from user with ID 2:")
+social_network.bfs(2)
 
 
 
