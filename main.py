@@ -15,10 +15,10 @@ class Graph:
     
     #We need a function to add new users.
     def addNewUser(self,user):
-        self.userIDs[userId]=user
+        self.userIDs[user.ID]=user
         #here we assigned a set to store friends of each user.
         #it will remove duplicates and is easy to add and delete into.
-        self.friends[userId]=set()
+        self.friends[user.ID]=set()
 
     #We need a function to delete users.
     def delUsers(self,userID):
@@ -50,7 +50,7 @@ class Graph:
 #Creation of class user
 class User:
     #initialize object
-    def__init__(self,name,ID):
+    def __init__(self,name,ID):
         self.name=name
         self.ID=ID
         self.friends=set()
@@ -131,6 +131,39 @@ def network_stats(social_network):
 '''
 Reccomend friend
 '''
+
+
+
+
+'''TEST CODE'''
+'''!!!!!!!!!!'''
+
+
+# Initialize graph
+social_network = Graph()
+
+#Lets add some users
+add_user(social_network,"Joseph",1)
+add_user(social_network,"Mhamad",2)
+add_user(social_network,"Georgio",3)
+add_user(social_network,"Charbel",4)
+
+# Add relationships between them
+add_friend(social_network, 1, 2)
+add_friend(social_network, 1, 3)
+add_friend(social_network, 2, 4)
+add_friend(social_network, 2, 3)
+
+
+#Delete users from network
+delete_user(social_network,1)
+
+# Update bios
+bioUpdate(social_network, 3, {"interests": ["music", "sports"]})
+bioUpdate(social_network, 2, {"interests": ["movies", "books"]})
+
+# check statistics
+print("Networks Statistics:", network_stats(social_network))
 
 
 
