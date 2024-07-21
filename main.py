@@ -163,14 +163,6 @@ def network_stats(social_network):
     return "num users:",num_users,"num friendships:",num_friendships,"avg friends",avg_friends
 
 
-
-'''
-Reccomend friend
-'''
-
-
-
-
 '''TEST CODE'''
 '''!!!!!!!!!!'''
 
