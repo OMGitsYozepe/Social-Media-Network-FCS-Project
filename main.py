@@ -2,6 +2,9 @@
 We will be implementing a social media network using graphs
 while also using everything we learned trough out this course'''
 
+#IMPORTS
+from collections import deque
+
 #Create a Class Graph that will contain functions regarding the relationships
 #between users.
 
