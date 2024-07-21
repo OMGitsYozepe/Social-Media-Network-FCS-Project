@@ -82,3 +82,9 @@ def add_user(social_network,name,userID):
     newUser= User(name,userID)
     social_network.addNewUser(newUser)
 
+#add a new friend
+def add_friend(social_network,userID,userID2):
+    social_network.friendsRelation(userID,userID2)
+    social_network.userIDs[userID].addFriends(userID2)
+    social_network.userIDs[userID2].addFriends(userID)
+
