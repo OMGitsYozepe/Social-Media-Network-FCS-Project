@@ -114,6 +114,19 @@ class Graph:
                     visited.append(neighbour)
                     stack.append(neighbour)
 
+
+    '''
+
+    DIJKSTRA'S ALGORITHM to-do
+
+    '''
+
+    
+    '''
+    CONNECTED COMPONENTS ALGORITHM
+
+    '''
+
 #END OF CLASS GRAPH
 
 #Creation of class user
