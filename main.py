@@ -18,10 +18,14 @@ class Graph:
     
     #We need a function to add new users.
     def addNewUser(self,user):
-        self.userIDs[user.ID]=user
+        if user.ID in self.userIDs:
+            print("User ID already exists, please choose another one!")
+        else:
+            self.userIDs[user.ID]=user
         #here we assigned a set to store friends of each user.
         #it will remove duplicates and is easy to add and delete into.
-        self.friends[user.ID]=set()
+            self.friends[user.ID]=set()
+            print("User added successfully!")
 
     #We need a function to delete users.
     def delUsers(self,userID):
@@ -36,14 +40,21 @@ class Graph:
 
     #Function to add relationship between users.
     def friendsRelation(self,userID,userID2):
-        if (userID and userID2) in self.userIDs:
+        if userID not in self.userIDs or userID2 not in self.userIDs:
+            print("One or both user IDs do not exist.")
+        elif userID2 in self.friends[userID]:
+            print("Users are already friends")
+        elif (userID and userID2) in self.userIDs:
             #for each user we add the other as his friend
             self.friends[userID].add(userID2)
             self.friends[userID2].add(userID)
+            print("Friend added successfully!")
 
     #Function to remove relationship between users.
     def delFriendsRelation(self,userID,userID2):
-        if (userID and userID2) in self.userIDs:
+        if userID not in self.userIDs or userID2 not in self.userIDs:
+            print("One or both user IDs do not exist.")
+        elif (userID and userID2) in self.userIDs:
             #each user we delete the other from the set of friends
             self.friends[userID].discard(userID2)
             self.friends[userID2].discard(userID)
@@ -166,9 +177,16 @@ def add_user(social_network,name,userID):
 
 #add a new friend
 def add_friend(social_network,userID,userID2):
-    social_network.friendsRelation(userID,userID2)
-    social_network.userIDs[userID].addFriends(userID2)
-    social_network.userIDs[userID2].addFriends(userID)
+    if userID in social_network.userIDs and userID2 in social_network.userIDs:
+        if userID2 not in social_network.friends[userID]:
+            social_network.friendsRelation(userID, userID2)
+            social_network.userIDs[userID].addFriends(userID2)
+            social_network.userIDs[userID2].addFriends(userID)
+            print("Friend added successfully.")
+        else:
+            print("Friendship already exists.")
+    else:
+        print("One or both user IDs do not exist.")
 
 #remove a friend
 def remove_friend(social_network,userID,userID2):
@@ -184,7 +202,12 @@ def bioUpdate(social_network,userID,details):
 
 #delete a user
 def delete_user(social_network,userID):
-    social_network.delUsers(userID)
+    if userID in social_network.userIDs:
+        social_network.delUsers(userID)
+        print("User deleted successfully.")
+    else:
+        print("User does not exist.")
+
 
 
 
@@ -226,13 +249,11 @@ def menu(social_network):
             name = input("Enter the user's name: ")
             userID = int(input("Enter the user's ID: "))
             add_user(social_network, name, userID)
-            print("User added successfully.")
             
         elif choice == '2':
             userID1 = int(input("Enter the first user's ID: "))
             userID2 = int(input("Enter the second user's ID: "))
             add_friend(social_network, userID1, userID2)
-            print("Friend added successfully.")
             
         elif choice == '3':
             userID1 = int(input("Enter the first user's ID: "))
