@@ -2,7 +2,8 @@
 We will be implementing a social media network using graphs
 while also using everything we learned trough out this course'''
 
-#Create a Class Graph that will contain functions regarding the object graph
+#Create a Class Graph that will contain functions regarding the relationships
+#between users.
 
 class Graph:
     #We initialized the object graph that will have 2 dictionaries,
@@ -43,7 +44,27 @@ class Graph:
             #each user we delete the other from the set of friends
             self.friends[userID].discard(userID2)
             self.friends[userID2].discard(userID)
-            
+
+#END OF CLASS GRAPH
+
+#Creation of class user
+class User:
+    #initialize object
+    def__init__(self,name,ID):
+        self.name=name
+        self.ID=ID
+        self.friends=set()
+        #dictionary, it could include interests,country,age...
+        self.bio={}
+
+    #function to add friends.
+    def addFriends(self,friendID):
+        self.friends.add(friendID)
+    
+    #function to remove friends.
+    def removeFriends(self,friendID):
+        self.friends.remove(friendID)
     
     
+
 
