@@ -83,7 +83,7 @@ class Graph:
         # Return the top recommendations
         return [self.userIDs[rec[0]].name for rec in sorted_recommendations]
 
-    #This is the BFS breadth first search algorithm that will search inside the friends relations.
+   #This is the BFS breadth first search algorithm that will search inside the friends relations.
     def bfs(self, startID):
         visited = []
         queue = []
@@ -97,6 +97,19 @@ class Graph:
                     visited.append(neighbour)
                     queue.append(neighbour)
 
+    #This is the DFS deapth first search algorithm that will search inside the friends relations.
+    def dfs(self,startID):
+        visited=[]
+        stack=deque()
+        visited.append(startID)
+        stack.append(startID)
+        while stack:
+            userID=stack.pop()
+            print(self.userIDs[userID].name," ")
+            for neighbour in self.friends[userID]:
+                if neighbour not in visited:
+                    visited.append(neighbour)
+                    stack.append(neighbour)
 
 #END OF CLASS GRAPH
 
@@ -170,24 +183,6 @@ def network_stats(social_network):
 
 
 
-'''Graph algorithms'''
-#Breadth first search
-def bfs(graph, visited, node):
-    visited.append(node)
-    queue.append(node)
-    while queue:
-        value=queue.pop(0)
-        print(value," ")
-        for neighbour in graph[value]:
-            if neighbour not in visited:
-                visited.append(neighbour)
-                queue.append(neighbour)
-    
-
-
-
-
-
 
 '''TEST CODE'''
 '''!!!!!!!!!!'''
@@ -233,5 +228,9 @@ print("Friend Recommendations for user 3:", social_network.recommend_friends(3))
 print("BFS starting from user with ID 2:")
 social_network.bfs(2)
 
+
+# Perform DFS starting from user with ID 2
+print("DFS starting from user with ID 2:")
+social_network.dfs(2)
 
 
