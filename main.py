@@ -250,3 +250,26 @@ print("DFS starting from user with ID 2:")
 social_network.dfs(2)
 
 
+
+def menu():
+    print("""Welcome to the newest social media platform FRIENDFUSION,
+    created by Joseph Nassif for the FCS final project. Please choose
+    one of the numbered options you would like to do:
+    1. Add user
+    2. Add friend
+    3. Remove friend
+    4. Update your bio
+    5. Delete User
+    6. Calculate network statistics
+    7. Binary search a user
+    8. Recommend a friend
+    9. Use BFS algorithm
+    10. Use DFS algorithm
+    11. ...
+    12. ...
+    13. ...
+    14. ...
+    15. ...
+    16. ... """)
+
+
