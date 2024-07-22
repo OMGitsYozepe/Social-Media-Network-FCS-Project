@@ -280,7 +280,7 @@ def menu(social_network):
 12. Visualize network
 13.Exit
 """)
-        choice = input("Enter your choice (1-16): ")
+        choice = input("Enter your choice (1-13): ")
         
         if choice == '1':
             name = input("Enter the user's name: ")
