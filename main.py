@@ -37,6 +37,9 @@ class Graph:
             #there is no match in value, no error is raised. 
             for i in self.friends.values():
                 i.discard(userID)
+            print("User deleted successfully")
+        else:
+            print("User ID does not exist.")
 
     #Function to add relationship between users.
     def friendsRelation(self,userID,userID2):
@@ -58,6 +61,9 @@ class Graph:
             #each user we delete the other from the set of friends
             self.friends[userID].discard(userID2)
             self.friends[userID2].discard(userID)
+            print("Friend removed successfully.")
+        else:
+            print("Friendship does not exist.")
 
     #sorting+Binary searching algorithm by ID
     #We are Performing binary search to find a user by their ID.
@@ -99,6 +105,8 @@ class Graph:
 
    #This is the BFS breadth first search algorithm that will search inside the friends relations.
     def bfs(self, startID):
+        if startID not in self.userIDs:
+            print("Starting ID does not exist.")
         visited = []
         queue = []
         visited.append(startID)
@@ -113,6 +121,8 @@ class Graph:
 
     #This is the DFS deapth first search algorithm that will search inside the friends relations.
     def dfs(self,startID):
+        if startID not in self.userIDs:
+            print("Starting ID dos not exisrt.")
         visited=[]
         stack=deque()
         visited.append(startID)
@@ -182,7 +192,6 @@ def add_friend(social_network,userID,userID2):
             social_network.friendsRelation(userID, userID2)
             social_network.userIDs[userID].addFriends(userID2)
             social_network.userIDs[userID2].addFriends(userID)
-            print("Friend added successfully.")
         else:
             print("Friendship already exists.")
     else:
@@ -199,6 +208,9 @@ def bioUpdate(social_network,userID,details):
     user= social_network.userIDs.get(userID)
     if user:
         user.addBio(details)
+        print("Bio updated successfully.")
+    else:
+        print("User ID doesnt exist.")
 
 #delete a user
 def delete_user(social_network,userID):
@@ -259,26 +271,23 @@ def menu(social_network):
             userID1 = int(input("Enter the first user's ID: "))
             userID2 = int(input("Enter the second user's ID: "))
             remove_friend(social_network, userID1, userID2)
-            print("Friend removed successfully.")
             
         elif choice == '4':
             userID = int(input("Enter the user's ID: "))
             bio_details = input("Enter the bio details (format: key1=value1,key2=value2): ")
             bio_dict = dict(item.split("=") for item in bio_details.split(","))
             bioUpdate(social_network, userID, bio_dict)
-            print("Bio updated successfully.")
+           
             
         elif choice == '5':
             userID = int(input("Enter the user's ID to delete: "))
             delete_user(social_network, userID)
-            print("User deleted successfully.")
+           
             
         elif choice == '6':
             stats = network_stats(social_network)
             print("Network Statistics:")
-            print(f"Number of users: {stats[1]}")
-            print(f"Number of friendships: {stats[3]}")
-            print(f"Average friends per user: {stats[5]:.2f}")
+            print(stats)
             
         elif choice == '7':
             userID = int(input("Enter the user's ID to search: "))
@@ -312,6 +321,8 @@ def menu(social_network):
 
 social_network=Graph()
 menu(social_network)
+
+
 
 
 
