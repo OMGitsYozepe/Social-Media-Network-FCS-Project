@@ -18,6 +18,7 @@ specific features. Each choice is clearly labeled and logically arranged, making
 the user interface intuitive even for those with limited technical experience. 
 
 
+PS: YOU NEED TO INSTALL THE LIBRARIES NETWORKX AND MATHPLOT
 
 1. Add user:
 
