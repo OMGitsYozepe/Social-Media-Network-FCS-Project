@@ -4,6 +4,8 @@ while also using everything we learned trough out this course'''
 
 #IMPORTS
 from collections import deque
+import networkx as nx
+import matplotlib.pyplot as plt
 
 #Create a Class Graph that will contain functions regarding the relationships
 #between users.
@@ -136,6 +138,31 @@ class Graph:
                     stack.append(neighbour)
 
 
+    #Function to visualize the relations of the graph
+    def visualize_graph(self):
+        G = nx.Graph()
+        # Adding nodes
+        for user_id in self.userIDs:
+            G.add_node(user_id, label=self.userIDs[user_id].name)
+        # Adding edges
+        for user_id, friends in self.friends.items():
+            for friend_id in friends:
+                G.add_edge(user_id, friend_id)
+        #positions nodes
+        pos = nx.spring_layout(G) 
+        # Draw nodes
+        nx.draw_networkx_nodes(G, pos, node_size=700)
+        # Draw edges
+        nx.draw_networkx_edges(G, pos, width=2)
+        # Draw labels
+        nx.draw_networkx_labels(G, pos, labels={user_id: self.userIDs[user_id].name for user_id in self.userIDs}, font_size=12)
+    
+        plt.title('Social Network Visualization')
+        plt.show()
+
+    
+
+
     '''
 
     DIJKSTRA'S ALGORITHM to-do
@@ -250,7 +277,8 @@ def menu(social_network):
 9. Use BFS algorithm
 10. Use DFS algorithm
 11. Dijkastras algorithm
-12. Exit
+12. Visualize network
+13.Exit
 """)
         choice = input("Enter your choice (1-16): ")
         
@@ -305,8 +333,12 @@ def menu(social_network):
             startID = int(input("Enter the starting user's ID for DFS: "))
             print("DFS starting from user with ID", startID)
             social_network.dfs(startID)
-            
-        elif choice == '12':
+
+        elif choice=="12":
+            print("Visualizing the network...")
+            social_network.visualize_graph()
+
+        elif choice == '13':
             print("Exiting the program.")
             break
         
