@@ -4,8 +4,7 @@ while also using everything we learned trough out this course'''
 
 #IMPORTS
 from collections import deque
-import networkx as nx
-import matplotlib.pyplot as plt
+
 
 #Create a Class Graph that will contain functions regarding the relationships
 #between users.
@@ -160,7 +159,31 @@ class Graph:
         plt.title('Social Network Visualization')
         plt.show()
 
+    #Function to use merge sorting to sort users by ID
+    def merge(self, left, right):
+        result = []
+        i = j = 0
+        while i < len(left) and j < len(right):
+            if left[i][1] < right[j][1]:
+                result.append(left[i])
+                i += 1
+            else:
+                result.append(right[j])
+                j += 1
+        result.extend(left[i:])
+        result.extend(right[j:])
+        return result
     
+    def mergeSort_users(self, info):
+        if len(info) <= 1:
+            return info
+        mid = len(info) // 2
+        left = self.mergeSort_users(info[:mid])
+        right = self.mergeSort_users(info[mid:])
+        return self.merge(left, right)
+
+
+
 
 
     '''
@@ -258,6 +281,11 @@ def network_stats(social_network):
     avg_friends = num_friendships / num_users
     return "num users:",num_users,"num friendships:",num_friendships,"avg friends",avg_friends
 
+# Function to sort users by their IDs using merge sort
+def sortID(self):
+    info = [(user.name,user.ID) for user in self.userIDs.values()]
+    sortedIDs = self.mergeSort_users(info)
+    return sortedIDs
 
 
 
@@ -278,7 +306,8 @@ def menu(social_network):
 10. Use DFS algorithm
 11. Dijkastras algorithm
 12. Visualize network
-13.Exit
+13. Merge sort user by ID
+14.Exit
 """)
         choice = input("Enter your choice (1-13): ")
         
@@ -337,8 +366,12 @@ def menu(social_network):
         elif choice=="12":
             print("Visualizing the network...")
             social_network.visualize_graph()
+        
+        elif choice=="13":
+            print("Sorting users by IDs...")
+            print(sortID(social_network))
 
-        elif choice == '13':
+        elif choice == '14':
             print("Exiting the program.")
             break
         
