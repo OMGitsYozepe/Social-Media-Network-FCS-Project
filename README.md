@@ -5,10 +5,10 @@ Here we are designing a social media network called:
 
 ![FriendFusion](https://github.com/user-attachments/assets/ed1ce20a-5815-4e4c-ac3c-819200d97c32)
 
-<img width="644" alt="Screenshot 2024-07-22 at 1 03 15 PM" src="https://github.com/user-attachments/assets/e31adefa-8d51-47be-b85b-3d6d8ed21362">
+<img width="698" alt="Screenshot 2024-07-22 at 1 54 50 PM" src="https://github.com/user-attachments/assets/0ec7d6de-7c13-46db-afa6-a74a0b98b663">
 
 
-A program featuring a menu with 12 choices 
+A program featuring a menu with 15 choices 
 offers an exceptional level of ease of use, ensuring 
 users can effortlessly navigate through a comprehensive range 
 of options. This well-organized menu structure allows users to quickly
@@ -72,9 +72,16 @@ PS: YOU NEED TO INSTALL THE LIBRARIES NETWORKX AND MATHPLOT
 
     <img width="656" alt="Screenshot 2024-07-22 at 12 58 04 PM" src="https://github.com/user-attachments/assets/52e9a124-7e25-405d-9f5d-ef518061976d">
 
+13. Merge Sort:
+    
+    This algorithm sorts users by their IDs in ascending order. It divides the list into smaller         parts, sorts each part, and then merges them back together to produce a sorted list. The result      is a dictionary of users organized by their IDs while also showing their name, providing an          efficient way to manage and view user data.
+
+14. Show connected components:
+
+    This function identifies distinct groups of connected users within the social network. It helps to determine clusters of users       who are all connected to each other, either directly or indirectly. By analyzing these connected components, we can better           understand the structure and segmentation of the social network.
 
 
-13. Exit:
+15. Exit:
 
-    Terminate the program. This option allows users to safely exit the application and ensures all data is     properly closed before quitting.
+    Terminate the program. This option allows users to safely exit the application and ensures all       data is properly closed before quitting.
     
