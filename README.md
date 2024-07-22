@@ -1,2 +1,1 @@
-# Social-Media-Network-FCS-Project
-This is the final project for the SE factory course "FCS foundation of Computer science"
+![banner](https://github.com/user-attachments/assets/8f5116bd-4b80-436e-8608-700b0dc98008)
