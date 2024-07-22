@@ -5,8 +5,7 @@ Here we are designing a social media network called:
 
 ![FriendFusion](https://github.com/user-attachments/assets/ed1ce20a-5815-4e4c-ac3c-819200d97c32)
 
-
-<img width="524" alt="Screenshot 2024-07-22 at 11 51 54 AM" src="https://github.com/user-attachments/assets/e236eb32-aa85-4168-aee4-a81de93a0b09">
+<img width="644" alt="Screenshot 2024-07-22 at 1 03 15 PM" src="https://github.com/user-attachments/assets/e31adefa-8d51-47be-b85b-3d6d8ed21362">
 
 
 A program featuring a menu with 12 choices 
@@ -67,7 +66,15 @@ PS: YOU NEED TO INSTALL THE LIBRARIES NETWORKX AND MATHPLOT
     Use Dijkstra's algorithm to find the shortest path between two users in the network. This is    
     particularly useful for weighted graphs where paths have different costs or distances.
 
-12. Exit:
+12. Visualization:
+
+    By using networkx and matplotLib, we are able to connect relations between user in a graph.
+
+    <img width="656" alt="Screenshot 2024-07-22 at 12 58 04 PM" src="https://github.com/user-attachments/assets/52e9a124-7e25-405d-9f5d-ef518061976d">
+
+
+
+13. Exit:
 
     Terminate the program. This option allows users to safely exit the application and ensures all data is     properly closed before quitting.
     
