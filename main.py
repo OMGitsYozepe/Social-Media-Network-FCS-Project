@@ -4,7 +4,8 @@ while also using everything we learned trough out this course'''
 
 #IMPORTS
 from collections import deque
-
+import networkx as nx
+import matplotlib.pyplot as plt
 
 #Create a Class Graph that will contain functions regarding the relationships
 #between users.
@@ -386,5 +387,13 @@ menu(social_network)
 
 
 
+
+
+'''
+Left to-do:
+            1. Dijkastras algorithm
+            2.Connected components algorithm
+
+'''
 
 
