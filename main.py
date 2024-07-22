@@ -249,12 +249,9 @@ def menu(social_network):
 8. Recommend a friend
 9. Use BFS algorithm
 10. Use DFS algorithm
-11. Exit
-12. ...
-13. ...
-14. ...
-15. ...
-16. ...""")
+11. Dijkastras algorithm
+12. Exit
+""")
         choice = input("Enter your choice (1-16): ")
         
         if choice == '1':
@@ -309,12 +306,12 @@ def menu(social_network):
             print("DFS starting from user with ID", startID)
             social_network.dfs(startID)
             
-        elif choice == '11':
+        elif choice == '12':
             print("Exiting the program.")
             break
         
         else:
-            print("Invalid choice, please enter a number between 1 and 16.")
+            print("Invalid choice, please enter a number between 1 and 12.")
 
 
 '''RUN THE PROGRAM'''
