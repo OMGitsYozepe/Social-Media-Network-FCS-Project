@@ -84,4 +84,9 @@ PS: YOU NEED TO INSTALL THE LIBRARIES NETWORKX AND MATHPLOT
 15. Exit:
 
     Terminate the program. This option allows users to safely exit the application and ensures all       data is properly closed before quitting.
+
+
+
+![Thank_youAny_donations_is_appreciated__)](https://github.com/user-attachments/assets/290b8993-4f11-47d9-a945-2de54a6cab77)
+
     
