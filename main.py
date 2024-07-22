@@ -308,9 +308,11 @@ def menu(social_network):
 11. Dijkastras algorithm
 12. Visualize network
 13. Merge sort user by ID
-14.Exit
+14. Show connected components
+
+15.Exit
 """)
-        choice = input("Enter your choice (1-13): ")
+        choice = input("Enter your choice (1-15): ")
         
         if choice == '1':
             name = input("Enter the user's name: ")
@@ -363,16 +365,22 @@ def menu(social_network):
             startID = int(input("Enter the starting user's ID for DFS: "))
             print("DFS starting from user with ID", startID)
             social_network.dfs(startID)
+            
+        elif choice== '11':
+            print("Djikastras algorithm for shortest path...")
 
-        elif choice=="12":
+        elif choice=='12':
             print("Visualizing the network...")
             social_network.visualize_graph()
         
-        elif choice=="13":
+        elif choice=='13':
             print("Sorting users by IDs...")
             print(sortID(social_network))
+            
+        elif choice=='14':
+            print("Showing connected components...")
 
-        elif choice == '14':
+        elif choice == '15':
             print("Exiting the program.")
             break
         
@@ -385,15 +393,15 @@ def menu(social_network):
 social_network=Graph()
 menu(social_network)
 
-
-
-
-
 '''
 Left to-do:
             1. Dijkastras algorithm
             2.Connected components algorithm
 
 '''
+
+
+
+
 
 
