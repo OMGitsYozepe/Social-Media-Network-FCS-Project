@@ -184,20 +184,21 @@ class Graph:
         return self.merge(left, right)
 
 
+#Function that shows connected components in the system
+    def connected_components(self):
+        G = nx.Graph()
+        for user_id in self.userIDs:
+            G.add_node(user_id)
+        for user_id, friends in self.friends.items():
+            for friend_id in friends:
+                G.add_edge(user_id, friend_id)
+        components = list(nx.connected_components(G))
+        return [{self.userIDs[uid].name for uid in component} for component in components]
 
 
 
-    '''
 
-    DIJKSTRA'S ALGORITHM to-do
 
-    '''
-
-    
-    '''
-    CONNECTED COMPONENTS ALGORITHM
-
-    '''
 
 #END OF CLASS GRAPH
 
@@ -287,6 +288,18 @@ def sortID(self):
     info = [(user.name,user.ID) for user in self.userIDs.values()]
     sortedIDs = self.mergeSort_users(info)
     return sortedIDs
+
+#Function that return all connected components in the instance graphs.
+def connected_components(social_network):
+    G = nx.Graph()
+    for user_id in social_network.userIDs:
+        G.add_node(user_id)
+    for user_id, friends in social_network.friends.items():
+        for friend_id in friends:
+            G.add_edge(user_id, friend_id)
+
+    components = list(nx.connected_components(G))
+    return components
 
 
 
@@ -379,6 +392,7 @@ def menu(social_network):
             
         elif choice=='14':
             print("Showing connected components...")
+            print(connected_components(social_network))
 
         elif choice == '15':
             print("Exiting the program.")
