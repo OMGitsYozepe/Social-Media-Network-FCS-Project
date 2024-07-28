@@ -301,6 +301,26 @@ def connected_components(social_network):
     components = list(nx.connected_components(G))
     return components
 
+#Function that returns the Dijkastras algorithm
+def shortest_path(social_network, start_userID, end_userID):
+    # Check if the user IDs exist in the social network
+    if start_userID not in social_network.userIDs or end_userID not in social_network.userIDs:
+        return "One or both user IDs do not exist."
+    graph = nx.Graph()
+    # Add users as nodes to the graph
+    for user_id in social_network.userIDs:
+        graph.add_node(user_id)
+    # Add relations as edges to the graph
+    for user_id, friends in social_network.friends.items():
+        for friend_id in friends:
+            graph.add_edge(user_id, friend_id)
+    if nx.has_path(graph, start_userID, end_userID):
+        path = nx.dijkstra_path(graph, start_userID, end_userID)
+        # Map user IDs to user names in the path
+        return [social_network.userIDs[user_id].name for user_id in path]
+    else:
+        return "No path exists between the users."
+
 
 
 def menu(social_network):
@@ -380,7 +400,10 @@ def menu(social_network):
             social_network.dfs(startID)
             
         elif choice== '11':
+            userID1 = int(input("Enter the first user's ID: "))
+            userID2 = int(input("Enter the second user's ID: "))
             print("Djikastras algorithm for shortest path...")
+            shortest_path(social_network,userID1,userID2)
 
         elif choice=='12':
             print("Visualizing the network...")
@@ -407,12 +430,6 @@ def menu(social_network):
 social_network=Graph()
 menu(social_network)
 
-'''
-Left to-do:
-            1. Dijkastras algorithm
-            2.Connected components algorithm
-
-'''
 
 
 
